@@ -26,26 +26,26 @@
 This project uses ETL techniques and ML algoroithms to classify disaster response messages.  The final product is a web app that shows statistics about the dataset and allows users to input a message and see the classification of that message.
 
 ## File Descriptions
-app
-|- templates				HTML templates
-|- |- go.html 				Webpage for classifying a user message
-|- |- master.html 			Main webpage
-|- run.py 					Launches the webapp
-data
-|- DisasterResponse.db		Database created by process_data.py
-|- disaster_categories.csv	Original dataset, disaster message categories
-|- disaster_messages.csv	Original dataset, disaster messages
-|- process_data.py			ETL pipeline for processing the datasets and formatting for the ML stage
-models
-|- classifier.pkl			Pickle file of sklearn classifier
-|- train_classifier.py		Create classifier model based on message data
-Results
-|- App Home View			Screenshot of app homepage
-|- App Classify View		Screenshot of app classify page
-|- Precision Recall and F1 Results.txt		Printout of ML pipeline performance parameters
+app\
+|- templates				HTML templates\
+|- |- go.html 				Webpage for classifying a user message\
+|- |- master.html 			Main webpage\
+|- run.py 					Launches the webapp\
+data\
+|- DisasterResponse.db		Database created by process_data.py\
+|- disaster_categories.csv	Original dataset, disaster message categories\
+|- disaster_messages.csv	Original dataset, disaster messages\
+|- process_data.py			ETL pipeline for processing the datasets and formatting for the ML stage\
+models\
+|- classifier.pkl			Pickle file of sklearn classifier\
+|- train_classifier.py		Create classifier model based on message data\
+Results\
+|- App Home View			Screenshot of app homepage\
+|- App Classify View		Screenshot of app classify page\
+|- Precision Recall and F1 Results.txt		Printout of ML pipeline performance parameters\
 
 ## Authors
-Project templates provided by Udacity
+Project templates provided by Udacity\
 ETL and ML scripts created by Chandler Angell
 
 ## Licensing
