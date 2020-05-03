@@ -1,0 +1,108 @@
+related
+           0         Prec: 0.6548        Recall: 0.4601        f1: 0.5405
+           1         Prec: 0.8468        Recall: 0.9248        f1: 0.8841
+request
+           0         Prec: 0.8928        Recall: 0.9695        f1: 0.9296
+           1         Prec: 0.7574        Recall: 0.4498        f1: 0.5644
+offer
+           0         Prec: 0.9958        Recall: 1.0000        f1: 0.9979
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+aid_related
+           0         Prec: 0.7528        Recall: 0.8495        f1: 0.7982
+           1         Prec: 0.7453        Recall: 0.6121        f1: 0.6722
+medical_help
+           0         Prec: 0.9306        Recall: 0.9896        f1: 0.9592
+           1         Prec: 0.5652        Recall: 0.1544        f1: 0.2425
+medical_products
+           0         Prec: 0.9538        Recall: 0.9976        f1: 0.9752
+           1         Prec: 0.7500        Recall: 0.1304        f1: 0.2222
+search_and_rescue
+           0         Prec: 0.9759        Recall: 0.9992        f1: 0.9874
+           1         Prec: 0.6000        Recall: 0.0455        f1: 0.0845
+security
+           0         Prec: 0.9826        Recall: 1.0000        f1: 0.9912
+           1         Prec: 1.0000        Recall: 0.0109        f1: 0.0215
+military
+           0         Prec: 0.9693        Recall: 0.9976        f1: 0.9833
+           1         Prec: 0.5000        Recall: 0.0698        f1: 0.1224
+child_alone
+           0         Prec: 1.0000        Recall: 1.0000        f1: 1.0000
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+water
+           0         Prec: 0.9582        Recall: 0.9963        f1: 0.9769
+           1         Prec: 0.8831        Recall: 0.3897        f1: 0.5408
+food
+           0         Prec: 0.9350        Recall: 0.9886        f1: 0.9610
+           1         Prec: 0.8437        Recall: 0.4727        f1: 0.6059
+shelter
+           0         Prec: 0.9443        Recall: 0.9927        f1: 0.9679
+           1         Prec: 0.8267        Recall: 0.3728        f1: 0.5138
+clothing
+           0         Prec: 0.9893        Recall: 0.9986        f1: 0.9939
+           1         Prec: 0.6500        Recall: 0.1884        f1: 0.2921
+money
+           0         Prec: 0.9798        Recall: 0.9996        f1: 0.9896
+           1         Prec: 0.6000        Recall: 0.0275        f1: 0.0526
+missing_people
+           0         Prec: 0.9895        Recall: 0.9998        f1: 0.9946
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+refugees
+           0         Prec: 0.9705        Recall: 0.9992        f1: 0.9847
+           1         Prec: 0.7778        Recall: 0.0833        f1: 0.1505
+death
+           0         Prec: 0.9639        Recall: 0.9972        f1: 0.9803
+           1         Prec: 0.7586        Recall: 0.1905        f1: 0.3045
+other_aid
+           0         Prec: 0.8713        Recall: 0.9903        f1: 0.9270
+           1         Prec: 0.4286        Recall: 0.0473        f1: 0.0852
+infrastructure_related
+           0         Prec: 0.9343        Recall: 0.9984        f1: 0.9653
+           1         Prec: 0.1111        Recall: 0.0029        f1: 0.0056
+transport
+           0         Prec: 0.9603        Recall: 0.9976        f1: 0.9786
+           1         Prec: 0.5714        Recall: 0.0717        f1: 0.1275
+buildings
+           0         Prec: 0.9600        Recall: 0.9970        f1: 0.9782
+           1         Prec: 0.6429        Recall: 0.1149        f1: 0.1949
+electricity
+           0         Prec: 0.9794        Recall: 0.9994        f1: 0.9893
+           1         Prec: 0.5000        Recall: 0.0270        f1: 0.0513
+tools
+           0         Prec: 0.9939        Recall: 1.0000        f1: 0.9969
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+hospitals
+           0         Prec: 0.9899        Recall: 0.9998        f1: 0.9948
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+shops
+           0         Prec: 0.9941        Recall: 1.0000        f1: 0.9970
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+aid_centers
+           0         Prec: 0.9865        Recall: 1.0000        f1: 0.9932
+           1         Prec: 0.0000        Recall: 0.0000        f1: 0.0000
+other_infrastructure
+           0         Prec: 0.9570        Recall: 0.9984        f1: 0.9773
+           1         Prec: 0.2727        Recall: 0.0132        f1: 0.0251
+weather_related
+           0         Prec: 0.8596        Recall: 0.9543        f1: 0.9045
+           1         Prec: 0.8294        Recall: 0.5879        f1: 0.6881
+floods
+           0         Prec: 0.9423        Recall: 0.9965        f1: 0.9686
+           1         Prec: 0.8509        Recall: 0.2468        f1: 0.3826
+storm
+           0         Prec: 0.9404        Recall: 0.9869        f1: 0.9631
+           1         Prec: 0.7625        Recall: 0.4012        f1: 0.5258
+fire
+           0         Prec: 0.9884        Recall: 1.0000        f1: 0.9941
+           1         Prec: 1.0000        Recall: 0.0161        f1: 0.0317
+earthquake
+           0         Prec: 0.9695        Recall: 0.9899        f1: 0.9796
+           1         Prec: 0.8769        Recall: 0.6980        f1: 0.7773
+cold
+           0         Prec: 0.9792        Recall: 0.9992        f1: 0.9891
+           1         Prec: 0.6923        Recall: 0.0763        f1: 0.1374
+other_weather
+           0         Prec: 0.9528        Recall: 0.9976        f1: 0.9747
+           1         Prec: 0.6129        Recall: 0.0717        f1: 0.1284
+direct_report
+           0         Prec: 0.8612        Recall: 0.9672        f1: 0.9112
+           1         Prec: 0.7110        Recall: 0.3410        f1: 0.4609

@@ -3,21 +3,22 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 def load_data(messages_filepath, categories_filepath):
+    """Load both input csv files and return a combined dataframe"""
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     df = messages.merge(categories, left_on='id', right_on='id')
     return df
     
 def clean_data(df):
-    categories = df['categories'].str.split(pat=';', expand=True)
-    row = categories.loc[0,:]
-    category_colnames = row.apply(lambda x: x[:-2])
+    """Clean up the column names and remove duplicate rows in the dataframe"""
+    categories = df['categories'].str.split(pat=';', expand=True)  
+    row = categories.loc[0,:]   
+    category_colnames = row.apply(lambda x: x[:-2]) 
     categories.columns = category_colnames
     
     for column in categories:
         # set each value to be the last character of the string
         categories[column] = categories[column].apply(lambda x: x[-1:])
-
         # convert column from string to numeric
         categories[column] = categories[column].astype('int')
 
@@ -25,14 +26,17 @@ def clean_data(df):
     df = pd.concat([df, categories], axis=1)
     
     df.drop_duplicates(inplace=True)
+    
     return df
 
 def save_data(df, database_filename):
+    """Export the dataframe asa database file. Note: ensure database does not exist."""
     engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('data', engine, index=False)  
 
 
 def main():
+    """Main program for loading, cleaning, and saving data"""
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]

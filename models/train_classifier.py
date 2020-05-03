@@ -1,40 +1,26 @@
 import sys
-# import libraries
+import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
-import time
-
+import re
 import nltk
 nltk.download('stopwords')
-
-# import nltk
-# nltk.download('stopwords')
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
-import re
-
 from sklearn.pipeline import Pipeline
-# from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
-
-import numpy as np
 from sklearn.datasets import make_multilabel_classification
 from sklearn.multioutput import MultiOutputClassifier
-from sklearn.neighbors import KNeighborsClassifier
-
-from sklearn.metrics import classification_report
-
 from sklearn.metrics import precision_recall_fscore_support
-
 from sklearn.model_selection import GridSearchCV
 
 import pickle
 
 def load_data(database_filepath):
-    # load data from database
+    """Load the database created by process_data.py"""
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql("SELECT * FROM data", con=engine)
     X = df[['message']]
@@ -48,10 +34,12 @@ def load_data(database_filepath):
        'other_weather', 'direct_report']
     Y = df[categories]
 
-    # for running, limit size
-    n = 1000
-    Y = Y.loc[:n]
-    X = X.loc[:n]
+    # For faster testing, limit the data size by uncommenting the following (comment back out for final run)
+    #n = 1000
+    #Y = Y.loc[:n]
+    #X = X.loc[:n]
+    
+    # reformat inputs and outputs
     X = X['message'].tolist()
     Y = Y.values
     Y = Y.astype(bool).astype(int)
@@ -59,6 +47,7 @@ def load_data(database_filepath):
     return X, Y, categories
 
 def tokenize(text):
+    """Tokenize text by removing non alphabetical characters, converting to lower case, lemmatizing, and removing stop words."""
     text = re.sub(r"[^a-zA-Z]", " ", text) 
     
     tokens = word_tokenize(text)
@@ -75,34 +64,57 @@ def tokenize(text):
 
 
 def build_model():
-    return Pipeline([
+    """Build the pipeline and return gridsearch variant"""
+    
+    pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
         ('clf', MultiOutputClassifier(RandomForestClassifier())) ])
+    
+    parameters = {
+        'vect__ngram_range': ((1, 1), (1, 2)),
+        'vect__max_df': (0.5, 0.75, 1.0),
+        'tfidf__use_idf': (True, False)
+    }
+    
+    # Use the following to only return the pipeline with no grid search
+    # return pipeline
+    
+    return GridSearchCV(pipeline, param_grid=parameters)
+
 
 
 def evaluate_model(model, x_test, y_test, category_names):
+    """Evaluate the model by calculating the precision, recall, and fscore with the test data"""
+    
     y_pred = model.predict(x_test)
+    
+    
     class_0 = []
     class_1 = []
 
+    
     for c in range(len(category_names)):
         class_0 = class_0 + [list(precision_recall_fscore_support(y_test[:,c], y_pred[:,c], average='binary', pos_label=0))[:-1]]
         class_1 = class_1 + [list(precision_recall_fscore_support(y_test[:,c], y_pred[:,c], average='binary', pos_label=1))[:-1]]
 
+    
     class_0 = np.array(class_0)
     class_1 = np.array(class_1)
     
+    # Print the results
     for idx, c in enumerate(category_names):
         print(c)
         print('\t 0 \t Prec: {p:.4f}\t Recall: {r:.4f}\t   f1: {f:.4f}'.format(p = class_0[idx,0], r = class_0[idx,1], f = class_0[idx,2]))
         print('\t 1 \t Prec: {p:.4f}\t Recall: {r:.4f}\t   f1: {f:.4f}'.format(p = class_1[idx,0], r = class_1[idx,1], f = class_1[idx,2]))
           
 def save_model(model, model_filepath):
+    """Export the model as a pickle file"""
     pickle.dump(model, open(model_filepath, 'wb'))
 
 
 def main():
+    """Main program for training and exporting the ML model"""
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
@@ -120,7 +132,7 @@ def main():
 
         print('Saving model...\n    MODEL: {}'.format(model_filepath))
         save_model(model, model_filepath)
-
+        
         print('Trained model saved!')
 
     else:
